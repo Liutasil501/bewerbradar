@@ -1,0 +1,7 @@
+bewerbradar.de {
+    reverse_proxy bewerbradar:3000
+}
+
+www.bewerbradar.de {
+    redir https://bewerbradar.de{uri}
+}
