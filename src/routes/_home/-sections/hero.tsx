@@ -64,9 +64,9 @@ export function Hero() {
 					transition={{ duration: 0.6, delay: 1 }}
 				>
 					<Trans>
-						<p className="font-medium text-muted-foreground tracking-tight md:text-lg">Finally,</p>
+						<p className="font-medium text-muted-foreground tracking-tight md:text-lg">Endlich,</p>
 						<h1 className="mt-1 font-bold text-4xl tracking-tight md:text-5xl lg:text-6xl">
-							A free and open-source resume builder
+							Ein CV-Builder, der den Job bekommt.
 						</h1>
 					</Trans>
 				</motion.div>
@@ -79,8 +79,7 @@ export function Hero() {
 					transition={{ duration: 0.6, delay: 1.2 }}
 				>
 					<Trans>
-						Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating,
-						and sharing your resume.
+						BewerbRadar erstellt automatisch ATS-optimierte Lebensläufe nach deutschem Standard.
 					</Trans>
 				</motion.p>
 

@@ -31,11 +31,11 @@ type RouterContext = {
 	flags: FeatureFlags;
 };
 
-const appName = "Reactive Resume";
-const tagline = "A free and open-source resume builder";
+const appName = "BewerbRadar";
+const tagline = "Der CV, der den Job bekommt.";
 const title = `${appName} — ${tagline}`;
 const description =
-	"Reactive Resume is a free and open-source resume builder that simplifies the process of creating, updating, and sharing your resume.";
+	"BewerbRadar ist der einfachste Weg zum perfekten, ATS-optimierten Lebenslauf für den deutschen Arbeitsmarkt.";
 
 await loadLocale(await getLocale());
 
