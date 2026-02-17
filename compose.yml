@@ -71,14 +71,16 @@ services:
         condition: service_healthy
 
   reactive_resume:
-    image: amruthpillai/reactive-resume:latest
-    # image: ghcr.io/amruthpillai/reactive-resume:latest
+    build: .
+    image: bewerbradar:latest
+    container_name: bewerbradar
+    restart: always
     environment:
       # Server
       - TZ=Etc/UTC
       - NODE_ENV=production
-      - APP_URL=http://localhost:3000
-      - PRINTER_APP_URL=http://reactive_resume:3000
+      - APP_URL=http://147.93.121.183
+      - PRINTER_APP_URL=http://bewerbradar:3000
       # Printer
       - PRINTER_ENDPOINT=ws://browserless:3000?token=1234567890
       # - PRINTER_ENDPOINT=http://chrome:9222 # Or, if you're using chromedp/headless-shell
@@ -95,7 +97,7 @@ services:
     volumes:
       - reactive_resume_data:/app/data
     ports:
-      - "3000:3000"
+      - "80:3000"
     depends_on:
       postgres:
         condition: service_healthy
