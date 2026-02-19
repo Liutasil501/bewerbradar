@@ -60,36 +60,38 @@ export function SocialAuth() {
 			</div>
 
 			<div>
-				<div className="grid grid-cols-2 gap-4">
+				<div className="flex flex-col gap-3">
 					<Button
 						variant="secondary"
 						onClick={handleOAuthLogin}
-						className={cn("hidden", "custom" in authProviders && "inline-flex")}
+						className={cn("hidden w-full", "custom" in authProviders && "inline-flex")}
 					>
 						<VaultIcon />
 						{authProviders.custom}
 					</Button>
 
 					<Button
+						variant="outline"
 						onClick={() => handleSocialLogin("google")}
 						className={cn(
-							"hidden w-full bg-white text-zinc-900 border border-zinc-200 shadow-sm hover:bg-gray-50 hover:text-zinc-900 transition-all duration-200 py-6 text-base font-semibold",
-							"google" in authProviders && "inline-flex items-center justify-center gap-3",
+							"hidden w-full font-medium",
+							"google" in authProviders && "flex items-center justify-center gap-2",
 						)}
 					>
-						<GoogleLogoIcon weight="bold" className="w-5 h-5 text-zinc-900" />
+						<GoogleLogoIcon className="w-5 h-5" />
 						Mit Google anmelden
 					</Button>
 
 					<Button
+						variant="outline"
 						onClick={() => handleSocialLogin("github")}
 						className={cn(
-							"hidden flex-1 bg-[#2b3137] text-white hover:bg-[#2b3137]/80",
-							"github" in authProviders && "inline-flex",
+							"hidden w-full font-medium",
+							"github" in authProviders && "flex items-center justify-center gap-2",
 						)}
 					>
-						<GithubLogoIcon />
-						GitHub
+						<GithubLogoIcon className="w-5 h-5" />
+						Mit GitHub anmelden
 					</Button>
 				</div>
 			</div>
