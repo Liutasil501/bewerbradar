@@ -73,12 +73,12 @@ export function SocialAuth() {
 					<Button
 						onClick={() => handleSocialLogin("google")}
 						className={cn(
-							"hidden flex-1 bg-[#4285F4] text-white hover:bg-[#4285F4]/80",
-							"google" in authProviders && "inline-flex",
+							"hidden w-full bg-white text-zinc-900 border border-zinc-200 shadow-sm hover:bg-gray-50 hover:text-zinc-900 transition-all duration-200 py-6 text-base font-semibold",
+							"google" in authProviders && "inline-flex items-center justify-center gap-3",
 						)}
 					>
-						<GoogleLogoIcon />
-						Google
+						<GoogleLogoIcon weight="bold" className="w-5 h-5 text-zinc-900" />
+						Mit Google anmelden
 					</Button>
 
 					<Button
