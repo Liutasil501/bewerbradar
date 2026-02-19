@@ -17,6 +17,15 @@ services:
       timeout: 10s
       retries: 3
 
+  adminer:
+    image: adminer:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   browserless:
     image: ghcr.io/browserless/chromium:latest
     restart: unless-stopped
@@ -87,7 +96,7 @@ services:
       # Database
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
       # Authentication
-      - AUTH_SECRET=change-me-to-a-secure-secret-key-in-production
+      - AUTH_SECRET=${AUTH_SECRET}
       # Storage
       - S3_ACCESS_KEY_ID=seaweedfs
       - S3_SECRET_ACCESS_KEY=seaweedfs
