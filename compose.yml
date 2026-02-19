@@ -88,7 +88,7 @@ services:
       # Server
       - TZ=Etc/UTC
       - NODE_ENV=production
-      - APP_URL=http://147.93.121.183
+      - APP_URL=https://bewerbradar.de
       - PRINTER_APP_URL=http://bewerbradar:3000
       # Printer
       - PRINTER_ENDPOINT=ws://browserless:3000?token=1234567890
