@@ -4,6 +4,34 @@ description: "List of all notable changes and updates to Reactive Resume"
 rss: true
 ---
 
+<Update label="v5.0.10" description="24th February 2026">
+  - **Fixes**
+    - Show section titles for summary-type custom sections in the resume builder. [#2744](https://github.com/amruthpillai/reactive-resume/pull/2744)
+    - Prevent browser password managers and Edge autofill/save prompts from appearing on AI settings API key fields. [#2719](https://github.com/amruthpillai/reactive-resume/pull/2719)
+    - Replace deprecated Tailwind CSS classes: use `inset-s-*`/`inset-e-*` instead of `start-*`/`end-*`.
+    - Fix PDF downloader to work correctly in offline mode. [#2743](https://github.com/amruthpillai/reactive-resume/pull/2743)
+    - Make bold formatting visible for `<strong>` in the resume rich text editor (uses plain `font-weight: bold` fallback if the CSS variable is unset). Fixes [#2730](https://github.com/amruthpillai/reactive-resume/issues/2730)
+    - Prevent credentials sign-in from dropping `session_token` Set-Cookie, improves login reliability. [#2718](https://github.com/amruthpillai/reactive-resume/pull/2718)
+    - Remove redundant `resume-` prefix from download filename; add spacing between pages in shared view. [#2709](https://github.com/amruthpillai/reactive-resume/pull/2709)
+    - Normalize autocomplete tokens for login and register forms. [#2714](https://github.com/amruthpillai/reactive-resume/pull/2714)
+    - Fix improper chips reordering and update dependency/translations. [#2711](https://github.com/amruthpillai/reactive-resume/issues/2711)
+    - Fix issue with clipping of heading in Lapras resume template.
+    - Remove error-causing plugins in oRPC integration.
+    - Remove duplicate database indexes; add index for `created_at` on user and resume tables.
+
+  - **Features & Improvements**
+    - Add new feature flag: `FLAG_DISABLE_IMAGE_PROCESSING` (allows disabling of image processing site-wide).
+    - Update Discord invite link in the app and documentation.
+    - Add comprehensive codebase and architecture documentation in `CLAUDE.md`.
+    - Sync latest translations from Crowdin (updated and added multiple languages).
+
+  - **Other**
+    - Refactor: rename auth utility from `originWith` to `withHostname`, preserve localhost/127.0.0.1 sibling trust.
+    - General dependency updates and code style improvements.
+    - Documentation and README updates.
+</Update>
+
+
 <Update label="v5.0.9" description="9th February 2026">
   - Add Computer Modern web fonts to the font selector, allowing the user to choose from a variety of "Computer Modern" (LaTeX) fonts.
     - This lets you create a resume that looks just like a LaTeX document, with the same fonts and styles.
