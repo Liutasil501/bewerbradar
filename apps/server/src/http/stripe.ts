@@ -5,9 +5,10 @@ import { user } from "@reactive-resume/db/schema";
 import { env } from "@reactive-resume/env/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(env.STRIPE_SECRET_KEY as string);
+const stripe = env.STRIPE_SECRET_KEY ? new Stripe(env.STRIPE_SECRET_KEY) : null;
 
 export async function handleStripeCheckout(request: Request) {
+	if (!stripe) return new Response("Stripe is not configured on this instance.", { status: 501 });
 	if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
 
 	try {
@@ -49,6 +50,7 @@ export async function handleStripeCheckout(request: Request) {
 }
 
 export async function handleStripePortal(request: Request) {
+	if (!stripe) return new Response("Stripe is not configured on this instance.", { status: 501 });
 	if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
 
 	try {
@@ -75,6 +77,7 @@ export async function handleStripePortal(request: Request) {
 }
 
 export async function handleStripeWebhook(request: Request) {
+	if (!stripe) return new Response("Stripe is not configured on this instance.", { status: 501 });
 	if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
 
 	const signature = request.headers.get("stripe-signature");
