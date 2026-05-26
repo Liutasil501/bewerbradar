@@ -81,6 +81,11 @@ export const env = createEnv({
 		CROWDIN_PROJECT_ID: z.string().optional(),
 		CROWDIN_API_TOKEN: z.string().optional(),
 		GOOGLE_CLOUD_API_KEY: z.string().optional(),
+
+		// Stripe
+		STRIPE_SECRET_KEY: z.string().min(1).optional(),
+		STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
+		STRIPE_PRICE_ID: z.string().min(1).optional(),
 	},
 	runtimeEnv: process.env,
 	emptyStringAsUndefined: true,

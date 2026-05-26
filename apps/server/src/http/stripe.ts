@@ -5,7 +5,7 @@ import { user } from "@reactive-resume/db/schema";
 import { env } from "@reactive-resume/env/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
+const stripe = new Stripe(env.STRIPE_SECRET_KEY as string);
 
 export async function handleStripeCheckout(request: Request) {
 	if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
@@ -31,7 +31,7 @@ export async function handleStripeCheckout(request: Request) {
 			payment_method_types: ["card", "paypal"],
 			line_items: [
 				{
-					price: process.env.STRIPE_PRICE_ID as string,
+					price: env.STRIPE_PRICE_ID as string,
 					quantity: 1,
 				},
 			],
@@ -78,7 +78,7 @@ export async function handleStripeWebhook(request: Request) {
 	if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
 
 	const signature = request.headers.get("stripe-signature");
-	const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+	const webhookSecret = env.STRIPE_WEBHOOK_SECRET;
 
 	if (!signature || !webhookSecret) return new Response("Webhook secret not set", { status: 400 });
 
