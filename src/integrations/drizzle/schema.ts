@@ -17,6 +17,8 @@ export const user = pg.pgTable(
 		username: pg.text("username").notNull().unique(),
 		displayUsername: pg.text("display_username").notNull().unique(),
 		twoFactorEnabled: pg.boolean("two_factor_enabled").notNull().default(false),
+		stripeCustomerId: pg.text("stripe_customer_id").unique(),
+		hasActiveSubscription: pg.boolean("has_active_subscription").notNull().default(false),
 		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 		updatedAt: pg
 			.timestamp("updated_at", { withTimezone: true })

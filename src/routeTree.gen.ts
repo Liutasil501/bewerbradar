@@ -34,8 +34,12 @@ import { Route as UploadsUserIdSplatRouteImport } from "./routes/uploads/$userId
 import { Route as DashboardSettingsProfileRouteImport } from "./routes/dashboard/settings/profile";
 import { Route as DashboardSettingsPreferencesRouteImport } from "./routes/dashboard/settings/preferences";
 import { Route as DashboardSettingsDangerZoneRouteImport } from "./routes/dashboard/settings/danger-zone";
+import { Route as DashboardSettingsBillingRouteImport } from "./routes/dashboard/settings/billing";
 import { Route as DashboardSettingsApiKeysRouteImport } from "./routes/dashboard/settings/api-keys";
 import { Route as DashboardSettingsAiRouteImport } from "./routes/dashboard/settings/ai";
+import { Route as ApiStripeWebhookRouteImport } from "./routes/api/stripe/webhook";
+import { Route as ApiStripePortalRouteImport } from "./routes/api/stripe/portal";
+import { Route as ApiStripeCheckoutRouteImport } from "./routes/api/stripe/checkout";
 import { Route as ApiRpcSplatRouteImport } from "./routes/api/rpc.$";
 import { Route as ApiOpenapiSplatRouteImport } from "./routes/api/openapi.$";
 import { Route as ApiAuthSplatRouteImport } from "./routes/api/auth.$";
@@ -168,6 +172,12 @@ const DashboardSettingsDangerZoneRoute =
     path: "/settings/danger-zone",
     getParentRoute: () => DashboardRouteRoute,
   } as any);
+const DashboardSettingsBillingRoute =
+  DashboardSettingsBillingRouteImport.update({
+    id: "/settings/billing",
+    path: "/settings/billing",
+    getParentRoute: () => DashboardRouteRoute,
+  } as any);
 const DashboardSettingsApiKeysRoute =
   DashboardSettingsApiKeysRouteImport.update({
     id: "/settings/api-keys",
@@ -178,6 +188,21 @@ const DashboardSettingsAiRoute = DashboardSettingsAiRouteImport.update({
   id: "/settings/ai",
   path: "/settings/ai",
   getParentRoute: () => DashboardRouteRoute,
+} as any);
+const ApiStripeWebhookRoute = ApiStripeWebhookRouteImport.update({
+  id: "/api/stripe/webhook",
+  path: "/api/stripe/webhook",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const ApiStripePortalRoute = ApiStripePortalRouteImport.update({
+  id: "/api/stripe/portal",
+  path: "/api/stripe/portal",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const ApiStripeCheckoutRoute = ApiStripeCheckoutRouteImport.update({
+  id: "/api/stripe/checkout",
+  path: "/api/stripe/checkout",
+  getParentRoute: () => rootRouteImport,
 } as any);
 const ApiRpcSplatRoute = ApiRpcSplatRouteImport.update({
   id: "/api/rpc/$",
@@ -223,8 +248,12 @@ export interface FileRoutesByFullPath {
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
+  "/api/stripe/checkout": typeof ApiStripeCheckoutRoute;
+  "/api/stripe/portal": typeof ApiStripePortalRoute;
+  "/api/stripe/webhook": typeof ApiStripeWebhookRoute;
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
+  "/dashboard/settings/billing": typeof DashboardSettingsBillingRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
@@ -252,8 +281,12 @@ export interface FileRoutesByTo {
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
+  "/api/stripe/checkout": typeof ApiStripeCheckoutRoute;
+  "/api/stripe/portal": typeof ApiStripePortalRoute;
+  "/api/stripe/webhook": typeof ApiStripeWebhookRoute;
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
+  "/dashboard/settings/billing": typeof DashboardSettingsBillingRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
@@ -286,8 +319,12 @@ export interface FileRoutesById {
   "/api/auth/$": typeof ApiAuthSplatRoute;
   "/api/openapi/$": typeof ApiOpenapiSplatRoute;
   "/api/rpc/$": typeof ApiRpcSplatRoute;
+  "/api/stripe/checkout": typeof ApiStripeCheckoutRoute;
+  "/api/stripe/portal": typeof ApiStripePortalRoute;
+  "/api/stripe/webhook": typeof ApiStripeWebhookRoute;
   "/dashboard/settings/ai": typeof DashboardSettingsAiRoute;
   "/dashboard/settings/api-keys": typeof DashboardSettingsApiKeysRoute;
+  "/dashboard/settings/billing": typeof DashboardSettingsBillingRoute;
   "/dashboard/settings/danger-zone": typeof DashboardSettingsDangerZoneRoute;
   "/dashboard/settings/preferences": typeof DashboardSettingsPreferencesRoute;
   "/dashboard/settings/profile": typeof DashboardSettingsProfileRoute;
@@ -320,8 +357,12 @@ export interface FileRouteTypes {
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
+    | "/api/stripe/checkout"
+    | "/api/stripe/portal"
+    | "/api/stripe/webhook"
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
+    | "/dashboard/settings/billing"
     | "/dashboard/settings/danger-zone"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
@@ -349,8 +390,12 @@ export interface FileRouteTypes {
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
+    | "/api/stripe/checkout"
+    | "/api/stripe/portal"
+    | "/api/stripe/webhook"
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
+    | "/dashboard/settings/billing"
     | "/dashboard/settings/danger-zone"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
@@ -382,8 +427,12 @@ export interface FileRouteTypes {
     | "/api/auth/$"
     | "/api/openapi/$"
     | "/api/rpc/$"
+    | "/api/stripe/checkout"
+    | "/api/stripe/portal"
+    | "/api/stripe/webhook"
     | "/dashboard/settings/ai"
     | "/dashboard/settings/api-keys"
+    | "/dashboard/settings/billing"
     | "/dashboard/settings/danger-zone"
     | "/dashboard/settings/preferences"
     | "/dashboard/settings/profile"
@@ -406,6 +455,9 @@ export interface RootRouteChildren {
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute;
   ApiOpenapiSplatRoute: typeof ApiOpenapiSplatRoute;
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute;
+  ApiStripeCheckoutRoute: typeof ApiStripeCheckoutRoute;
+  ApiStripePortalRoute: typeof ApiStripePortalRoute;
+  ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute;
   UploadsUserIdSplatRoute: typeof UploadsUserIdSplatRoute;
 }
 
@@ -586,6 +638,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof DashboardSettingsDangerZoneRouteImport;
       parentRoute: typeof DashboardRouteRoute;
     };
+    "/dashboard/settings/billing": {
+      id: "/dashboard/settings/billing";
+      path: "/settings/billing";
+      fullPath: "/dashboard/settings/billing";
+      preLoaderRoute: typeof DashboardSettingsBillingRouteImport;
+      parentRoute: typeof DashboardRouteRoute;
+    };
     "/dashboard/settings/api-keys": {
       id: "/dashboard/settings/api-keys";
       path: "/settings/api-keys";
@@ -599,6 +658,27 @@ declare module "@tanstack/react-router" {
       fullPath: "/dashboard/settings/ai";
       preLoaderRoute: typeof DashboardSettingsAiRouteImport;
       parentRoute: typeof DashboardRouteRoute;
+    };
+    "/api/stripe/webhook": {
+      id: "/api/stripe/webhook";
+      path: "/api/stripe/webhook";
+      fullPath: "/api/stripe/webhook";
+      preLoaderRoute: typeof ApiStripeWebhookRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/api/stripe/portal": {
+      id: "/api/stripe/portal";
+      path: "/api/stripe/portal";
+      fullPath: "/api/stripe/portal";
+      preLoaderRoute: typeof ApiStripePortalRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/api/stripe/checkout": {
+      id: "/api/stripe/checkout";
+      path: "/api/stripe/checkout";
+      fullPath: "/api/stripe/checkout";
+      preLoaderRoute: typeof ApiStripeCheckoutRouteImport;
+      parentRoute: typeof rootRouteImport;
     };
     "/api/rpc/$": {
       id: "/api/rpc/$";
@@ -673,6 +753,7 @@ interface DashboardRouteRouteChildren {
   DashboardIndexRoute: typeof DashboardIndexRoute;
   DashboardSettingsAiRoute: typeof DashboardSettingsAiRoute;
   DashboardSettingsApiKeysRoute: typeof DashboardSettingsApiKeysRoute;
+  DashboardSettingsBillingRoute: typeof DashboardSettingsBillingRoute;
   DashboardSettingsDangerZoneRoute: typeof DashboardSettingsDangerZoneRoute;
   DashboardSettingsPreferencesRoute: typeof DashboardSettingsPreferencesRoute;
   DashboardSettingsProfileRoute: typeof DashboardSettingsProfileRoute;
@@ -684,6 +765,7 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardSettingsAiRoute: DashboardSettingsAiRoute,
   DashboardSettingsApiKeysRoute: DashboardSettingsApiKeysRoute,
+  DashboardSettingsBillingRoute: DashboardSettingsBillingRoute,
   DashboardSettingsDangerZoneRoute: DashboardSettingsDangerZoneRoute,
   DashboardSettingsPreferencesRoute: DashboardSettingsPreferencesRoute,
   DashboardSettingsProfileRoute: DashboardSettingsProfileRoute,
@@ -720,6 +802,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiOpenapiSplatRoute: ApiOpenapiSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
+  ApiStripeCheckoutRoute: ApiStripeCheckoutRoute,
+  ApiStripePortalRoute: ApiStripePortalRoute,
+  ApiStripeWebhookRoute: ApiStripeWebhookRoute,
   UploadsUserIdSplatRoute: UploadsUserIdSplatRoute,
 };
 export const routeTree = rootRouteImport

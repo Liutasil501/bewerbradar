@@ -76,6 +76,33 @@ export function BuilderDock() {
 		if (!resume?.id) return;
 
 		const filename = generateFilename(resume.data.basics.name, "pdf");
+
+		// STRIPE PAYMENT WALL
+		if (!session?.user) {
+			toast.error(t`You must be logged in to download PDFs.`);
+			return;
+		}
+
+		// Use type assertion since hasActiveSubscription was added to schema but might not be in auth typing
+		const currentUser = session.user as any;
+
+		if (!currentUser.hasActiveSubscription) {
+			const checkoutId = toast.loading(t`Redirecting to checkout...`);
+			try {
+				const res = await fetch("/api/stripe/checkout", { method: "POST" });
+				const { url } = await res.json();
+				if (url) {
+					window.location.href = url;
+					return;
+				}
+			} catch (error) {
+				toast.error(t`Failed to initialize checkout. Please try again.`);
+			} finally {
+				toast.dismiss(checkoutId);
+			}
+			return;
+		}
+
 		const toastId = toast.loading(t`Please wait while your PDF is being generated...`, {
 			description: t`This may take a while depending on the server capacity. Please do not close the window or refresh the page.`,
 		});
@@ -88,7 +115,7 @@ export function BuilderDock() {
 		} finally {
 			toast.dismiss(toastId);
 		}
-	}, [resume?.id, resume?.data.basics.name, printResumeAsPDF]);
+	}, [resume?.id, resume?.data.basics.name, printResumeAsPDF, session]);
 
 	return (
 		<div className="fixed inset-x-0 bottom-4 flex items-center justify-center">

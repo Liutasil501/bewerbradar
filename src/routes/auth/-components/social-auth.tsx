@@ -78,7 +78,7 @@ export function SocialAuth() {
 							"google" in authProviders && "flex items-center justify-center gap-2",
 						)}
 					>
-						<GoogleLogoIcon className="w-5 h-5" />
+						<GoogleLogoIcon className="h-5 w-5" />
 						Mit Google anmelden
 					</Button>
 
@@ -90,7 +90,7 @@ export function SocialAuth() {
 							"github" in authProviders && "flex items-center justify-center gap-2",
 						)}
 					>
-						<GithubLogoIcon className="w-5 h-5" />
+						<GithubLogoIcon className="h-5 w-5" />
 						Mit GitHub anmelden
 					</Button>
 				</div>

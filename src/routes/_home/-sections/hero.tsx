@@ -78,9 +78,7 @@ export function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 1.2 }}
 				>
-					<Trans>
-						BewerbRadar erstellt automatisch ATS-optimierte Lebensläufe nach deutschem Standard.
-					</Trans>
+					<Trans>BewerbRadar erstellt automatisch ATS-optimierte Lebensläufe nach deutschem Standard.</Trans>
 				</motion.p>
 
 				{/* CTA Buttons */}
