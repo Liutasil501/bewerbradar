@@ -26,6 +26,8 @@ export const user = pg.pgTable(
 		lastActiveAt: pg.timestamp("last_active_at", { withTimezone: true }),
 		role: pg.text("role").default("user"),
 		banned: pg.boolean("banned").default(false),
+		hasActiveSubscription: pg.boolean("has_active_subscription").notNull().default(false),
+		stripeCustomerId: pg.text("stripe_customer_id"),
 		banReason: pg.text("ban_reason"),
 		banExpires: pg.timestamp("ban_expires", {
 			precision: 6,

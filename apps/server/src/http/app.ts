@@ -15,6 +15,7 @@ import { handleUpload } from "../static/uploads";
 import { handleWebApp, handleWebAppHead, serveWebDistStatic } from "../static/web";
 import { handleAuth, handleOAuth } from "./auth";
 import { handleHealth } from "./health";
+import { handleStripeCheckout, handleStripePortal, handleStripeWebhook } from "./stripe";
 
 export function createApp() {
 	const app = new Hono();
@@ -26,6 +27,9 @@ export function createApp() {
 	app.get("/api/auth/oauth", (c) => handleOAuth(c.req.raw));
 	app.all("/api/auth/*", (c) => handleAuth(c.req.raw));
 	app.get("/api/health", () => handleHealth());
+	app.post("/api/stripe/checkout", (c) => handleStripeCheckout(c.req.raw));
+	app.post("/api/stripe/portal", (c) => handleStripePortal(c.req.raw));
+	app.post("/api/stripe/webhook", (c) => handleStripeWebhook(c.req.raw));
 	app.get("/api/uploads/*", (c) => handleUpload(c.req.raw));
 	app.get("/uploads/*", (c) => handleUpload(c.req.raw));
 	app.get("/schema.json", () => handleSchemaJson());

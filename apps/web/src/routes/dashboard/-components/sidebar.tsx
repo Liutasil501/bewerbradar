@@ -5,6 +5,7 @@ import { Trans } from "@lingui/react/macro";
 import {
 	BrainIcon,
 	ChatCircleDotsIcon,
+	CreditCardIcon,
 	GearSixIcon,
 	KeyIcon,
 	ReadCvLogoIcon,
@@ -59,6 +60,11 @@ const settingsSidebarItems = [
 		icon: <UserCircleIcon />,
 		label: msg`Profile`,
 		href: "/dashboard/settings/profile",
+	},
+	{
+		icon: <CreditCardIcon />,
+		label: msg`Billing`,
+		href: "/dashboard/settings/billing",
 	},
 	{
 		icon: <GearSixIcon />,

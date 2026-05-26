@@ -78,6 +78,18 @@ export function BuilderDock({ pageLayout, onTogglePageLayout }: BuilderDockProps
 	const onDownloadPDF = useCallback(async () => {
 		if (!resume) return;
 
+		const currentUser = session?.user as any;
+		if (currentUser && !currentUser.hasActiveSubscription) {
+			toast.error(t`Premium Subscription Required`, {
+				description: t`You need an active Premium subscription to download PDFs.`,
+				action: {
+					label: t`Upgrade`,
+					onClick: () => navigate({ to: "/dashboard/settings/billing" }),
+				},
+			});
+			return;
+		}
+
 		const filename = generateFilename(resume.name, "pdf");
 		const toastId = toast.loading(t`Please wait while your PDF is being generated...`);
 
