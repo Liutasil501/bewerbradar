@@ -86,8 +86,10 @@ services:
       - data_network
       - storage_network
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     env_file:
+      - path: .env
+        required: false
       - path: .env.example
         required: false
     volumes:
