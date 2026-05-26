@@ -108,10 +108,21 @@ services:
       timeout: 10s
       retries: 3
 
+  jadeai:
+    image: twwch/jadeai:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3000"
+    environment:
+      - AUTH_SECRET=3715a940ccf06b2dac59a3695de130d0ec6e0ff895310c149f30d2c2f33ab703
+    volumes:
+      - jadeai_data:/app/data
+
 volumes:
   postgres_data:
   redis_data:
   seaweedfs_data:
+  jadeai_data:
 
 networks:
   data_network:
